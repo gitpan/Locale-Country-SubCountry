@@ -12,7 +12,7 @@ use IO::File;
 
 use Text::CSV_XS;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # -----------------------------------------------
 

@@ -21,7 +21,9 @@ WriteMakefile
  },
  DISTNAME  => 'Locale-Country-SubCountry',
  NAME      => 'Locale::Country::SubCountry',
- PL_FILES  => {},
+# Next line runs copy.config.pl when user runs 'make'.
+# Warning: '...' => 0 is OK but => '' or undef are ignored.
+ PL_FILES  => {'scripts/copy.config.pl' => 'Copying...'},
  PREREQ_PM =>
  {
  	 Config::Tiny                => 2.13,

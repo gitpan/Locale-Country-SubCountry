@@ -3,9 +3,10 @@
 use strict;
 use warnings;
 
-use Locale::Country::SubCountry::Util::Config;
-
 use File::Copy;
+use File::HomeDir;
+
+use Path::Class;
 
 # ----------------------------------------
 

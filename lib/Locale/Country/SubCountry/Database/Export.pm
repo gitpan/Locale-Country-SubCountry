@@ -13,7 +13,7 @@ use Text::Xslate;
 
 fieldhash my %whole_page => 'whole_page';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # -----------------------------------------------
 

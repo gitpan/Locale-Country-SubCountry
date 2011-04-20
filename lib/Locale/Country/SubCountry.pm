@@ -6,7 +6,7 @@ use warnings;
 
 use Hash::FieldHash ':all';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # -----------------------------------------------
 
@@ -148,7 +148,12 @@ All that remains is to tell L<Locale::Country::SubCountry> your values for some 
 
 For that, see config/.htlocale.country.subcountry.conf.
 
-But wait! Before editing that config file, run scripts/copy.config.pl. It will copy
+If you are using Build.PL, running Build (without parameters) will run scripts/copy.config.pl,
+as explained next.
+
+If you are using Makefile.PL, running make (without parameters) will also run scripts/copy.config.pl.
+
+Either way, before editing the config file, ensure you run scripts/copy.config.pl. It will copy
 the config file using L<File::HomeDir>, to a directory where the run-time code in
 L<Locale::Country::SubCountry> will look for it.
 

@@ -17,28 +17,28 @@ name: Locale-Country-SubCountry
 provides:
   Locale::Country::SubCountry:
     file: lib/Locale/Country/SubCountry.pm
-    version: 1.00
+    version: 1.01
   Locale::Country::SubCountry::Base:
     file: lib/Locale/Country/SubCountry/Base.pm
-    version: 1.00
+    version: 1.01
   Locale::Country::SubCountry::Database:
     file: lib/Locale/Country/SubCountry/Database.pm
-    version: 1.00
+    version: 1.01
   Locale::Country::SubCountry::Database::Base:
     file: lib/Locale/Country/SubCountry/Database/Base.pm
-    version: 1.00
+    version: 1.01
   Locale::Country::SubCountry::Database::Create:
     file: lib/Locale/Country/SubCountry/Database/Create.pm
-    version: 1.00
+    version: 1.01
   Locale::Country::SubCountry::Database::Export:
     file: lib/Locale/Country/SubCountry/Database/Export.pm
-    version: 1.00
+    version: 1.01
   Locale::Country::SubCountry::Database::Import:
     file: lib/Locale/Country/SubCountry/Database/Import.pm
-    version: 1.00
+    version: 1.01
   Locale::Country::SubCountry::Util::Config:
     file: lib/Locale/Country/SubCountry/Util/Config.pm
-    version: 1.00
+    version: 1.01
 requires:
   Config::Tiny: 2.13
   DBD::SQLite: 1.31
@@ -56,4 +56,4 @@ requires:
   parent: 0.224
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 1.00
+version: 1.01

@@ -11,7 +11,7 @@ use Hash::FieldHash ':all';
 fieldhash my %config    => 'config';
 fieldhash my %connector => 'connector';
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # -----------------------------------------------
 
