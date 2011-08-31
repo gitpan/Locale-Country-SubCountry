@@ -19,11 +19,7 @@ htdocs/assets/templates/locale/country/subcountry/web.page.tx
 htdocs/assets/templates/locale/country/subcountry/whole.page.tx
 lib/Locale/Country/SubCountry.pm
 lib/Locale/Country/SubCountry/Base.pm
-lib/Locale/Country/SubCountry/Database.pm
-lib/Locale/Country/SubCountry/Database/Base.pm
-lib/Locale/Country/SubCountry/Database/Create.pm
 lib/Locale/Country/SubCountry/Database/Export.pm
-lib/Locale/Country/SubCountry/Database/Import.pm
 lib/Locale/Country/SubCountry/Util/Config.pm
 Makefile.PL
 MANIFEST			This list of files
@@ -31,13 +27,10 @@ META.json
 META.yml
 README
 scripts/copy.config.pl
-scripts/create.tables.pl
 scripts/demo.pl
-scripts/drop.tables.pl
 scripts/export.countries.as.csv.pl
 scripts/export.countries.as.html.pl
 scripts/export.sub.countries.as.csv.pl
 scripts/export.sub.countries.as.html.pl
-scripts/populate.tables.pl
 t/pod.t
 t/test.t

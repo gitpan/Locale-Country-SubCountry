@@ -7,6 +7,8 @@ use Getopt::Long;
 
 use Locale::Country::SubCountry::Database::Export;
 
+use Pod::Usage;
+
 # -------------------------------
 
 my($option_parser) = Getopt::Long::Parser -> new();

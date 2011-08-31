@@ -1,5 +1,14 @@
 Revision history for Perl extension Locale::Country::SubCountry.
 
+1.02  Tue Aug 30 10:49:00 2011
+	- Add South Sudan.
+	- Move data/countries.csv and data/sub_countries.csv into the source code of Locale::Country::SubCountry::Base,
+	  since trying to keep the data in SQLite lead to an endless series of test failure reports.
+	  This involved many patches, including deletion of modules and scripts to do with a db-style implementation.
+	- Rename sub init() to sub _init() in each module, to emphasize it's not for general consumption.
+	- Add <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> to the web page templates, so that
+	  non-English subcountry names display properly in the output of scripts/export.sub.countries.as.html.pl.
+
 1.01  Tue Apr 19 17:15:00 2011
 	- Make Build.PL and Makefile.PL run scripts/copy.config.pl.
 

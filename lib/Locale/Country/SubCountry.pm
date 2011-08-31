@@ -1,40 +1,20 @@
 package Locale::Country::SubCountry;
 
-use parent Locale::Country::SubCountry::Database::Base;
+use parent Locale::Country::SubCountry::Base;
 use strict;
 use warnings;
 
 use Hash::FieldHash ':all';
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 # -----------------------------------------------
 
-sub all_countries
-{
-	my($self) = @_;
-
-	return $self -> connector -> dbh -> selectall_arrayref('select * from countries order by name', {Slice => {} });
-
-} # End of all_countries;
-
-# -----------------------------------------------
-
-sub all_sub_countries
-{
-	my($self) = @_;
-
-	return $self -> connector -> dbh -> selectall_arrayref('select * from sub_countries order by country_id, name', {Slice => {} });
-
-} # End of all_sub_countries;
-
-# -----------------------------------------------
-
-sub init
+sub _init
 {
 	my($self, $arg) = @_;
 
-	$self -> SUPER::init($arg);
+	$self -> SUPER::_init($arg);
 
 	return from_hash($self, $arg);
 
@@ -47,12 +27,7 @@ sub new
 	my($class, %arg) = @_;
     my($self)        = bless {}, $class;
 
-	$self -> init(\%arg);
-
-	$self -> db
-		(
-		 Locale::Country::SubCountry::Database::Base -> new(config => $self -> config)
-		);
+	$self -> _init(\%arg);
 
 } # End of new.
 
@@ -100,8 +75,6 @@ It also provides:
 =item o ISO 3166-1 3 letter codes for countries
 
 =item o ISO 3166-2 1 .. 5 letter codes for subcountries
-
-=item o All this in an SQLite database
 
 =back
 
@@ -184,7 +157,7 @@ C<new()> is called as C<< my($builder) = Locale::Country::SubCountry -> new(k1 =
 
 It returns a new object of type C<Locale::Country::SubCountry>.
 
-Key-value pairs in accepted in the parameter list (see corresponding methods for details):
+Key-value pairs accepted in the parameter list (see corresponding methods for details):
 
 =over 4
 
@@ -194,69 +167,15 @@ Key-value pairs in accepted in the parameter list (see corresponding methods for
 
 =head1 Methods
 
-=head1 Methods
-
 =head2 all_countries()
 
-Read the whole 'countries' table.
+See L<Locale::Country::SubCountry::Base/all_countries()>.
 
-Returns an arrayref, 1 element per country, where each element is a hashref with these keys:
+=head2 all_sub_countries()
 
-=over 4
+See L<Locale::Country::SubCountry::Base/all_sub_countries()>.
 
-=item o id
-
-Unique identifier for the country. Actually the database's primary key.
-
-=item o address_format
-
-A string showing how to format an address in this country. Only set for some countries.
-
-Split the string on '#' characters, to produce a format of N lines.
-
-Replace the tokens ':X' with the corresponding data (if available).
-
-=item o code2
-
-The ISO3166-1 2-letter code for the country.
-
-=item o code3
-
-The ISO3166-1 3-letter code for the country.
-
-=item o name
-
-The name of the country, in English.
-
-=back
-
-=head2 all_subcountries()
-
-Read the whole 'sub_countries' table.
-
-Returns an arrayref, 1 element per subcountry, where each element is a hashref with these keys:
-
-=over 4
-
-=item o id
-
-Unique identifier for the subcountry. Actually the database's primary key.
-
-=item o country_id
-
-The primary key into the 'countries' table.
-
-=item o code
-
-The ISO3166-2 1 .. 5-letter code for the country.
-
-=item o name
-
-The name of the subcountry, in the country's native script.
-
-=back
-
-=head2 init()
+=head2 _init()
 
 For use by subclasses.
 
@@ -273,10 +192,6 @@ The file CHANGES was converted into Changelog.ini by L<Module::Metadata::Changes
 =head1 Version Numbers
 
 Version numbers < 1.00 represent development versions. From 1.00 up, they are production versions.
-
-=head1 Thanks
-
-Many thanks are due to the people who chose to make osCommerce, PrestaShop, Zen Cart, etc, Open Source.
 
 =head1 Support
 

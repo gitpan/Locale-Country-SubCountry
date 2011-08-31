@@ -5,7 +5,7 @@ use warnings;
 
 use Locale::Country::SubCountry;
 
-# ------------------------------------------------
+# ------------------------------
 
 my($obj)             = Locale::Country::SubCountry -> new;
 my($country)         = $obj -> all_countries;

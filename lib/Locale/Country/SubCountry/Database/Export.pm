@@ -1,39 +1,16 @@
 package Locale::Country::SubCountry::Database::Export;
 
-use parent 'Locale::Country::SubCountry::Database::Base';
+use parent 'Locale::Country::SubCountry::Base';
 use strict;
 use warnings;
 
 use Hash::FieldHash ':all';
 
-use Locale::Country::SubCountry::Database;
-
-use Text::CSV_XS;
-use Text::Xslate;
+use Text::Xslate 'mark_raw';
 
 fieldhash my %whole_page => 'whole_page';
 
-our $VERSION = '1.01';
-
-# -----------------------------------------------
-
-sub all_countries
-{
-	my($self) = @_;
-
-	return $self -> connector -> dbh -> selectall_arrayref('select * from countries order by name', {Slice => {} });
-
-} # End of all_countries;
-
-# -----------------------------------------------
-
-sub all_sub_countries
-{
-	my($self) = @_;
-
-	return $self -> connector -> dbh -> selectall_arrayref('select * from sub_countries order by country_id, name', {Slice => {} });
-
-} # End of all_sub_countries;
+our $VERSION = '1.02';
 
 # -----------------------------------------------
 
@@ -119,16 +96,16 @@ sub countries_as_html
 
 # -----------------------------------------------
 
-sub init
+sub _init
 {
 	my($self, $arg)   = @_;
 	$$arg{whole_page} ||= 0;
 
-	$self -> SUPER::init($arg);
+	$self -> SUPER::_init($arg);
 
 	return from_hash($self, $arg);
 
-} # End of init.
+} # End of _init.
 
 # -----------------------------------------------
 
@@ -137,12 +114,7 @@ sub new
 	my($class, %arg) = @_;
     my($self)        = bless {}, $class;
 
-	$self -> init(\%arg);
-
-	$self -> db
-		(
-		 Locale::Country::SubCountry::Database -> new(config => $self -> config)
-		);
+	$self -> _init(\%arg);
 
 	return $self;
 
@@ -167,7 +139,7 @@ sub sub_countries_as_csv
 		[
 			$$item{country_id},
 			$$item{code},
-			$$item{name},
+			mark_raw($$item{name}),
 		];
 	}
 
@@ -248,67 +220,15 @@ L<Locale::Country::SubCountry> provides subcountry names in their native scripts
 
 =head2 all_countries()
 
-Read the whole 'countries' table.
+See L<Locale::Country::SubCountry::Base/all_countries()>.
 
-Returns an arrayref, 1 element per country, where each element is a hashref with these keys:
+=head2 all_sub_countries()
 
-=over 4
-
-=item o id
-
-Unique identifier for the country. Actually the database's primary key.
-
-=item o address_format
-
-A string showing how to format an address in this country. Only set for some countries.
-
-Split the string on '#' characters, to produce a format of N lines.
-
-Replace the tokens ':X' with the corresponding data (if available).
-
-=item o code2
-
-The ISO3166-1 2-letter code for the country.
-
-=item o code3
-
-The ISO3166-1 3-letter code for the country.
-
-=item o name
-
-The name of the country, in English.
-
-=back
-
-=head2 all_subcountries()
-
-Read the whole 'sub_countries' table.
-
-Returns an arrayref, 1 element per subcountry, where each element is a hashref with these keys:
-
-=over 4
-
-=item o id
-
-Unique identifier for the subcountry. Actually the database's primary key.
-
-=item o country_id
-
-The primary key into the 'countries' table.
-
-=item o code
-
-The ISO3166-2 1 .. 5-letter code for the country.
-
-=item o name
-
-The name of the subcountry, in the country's native script.
-
-=back
+See L<Locale::Country::SubCountry::Base/all_sub_countries()>.
 
 =head2 countries_as_csv()
 
-Print to STDOUT a CSV version of the 'countries' table.
+Print to STDOUT a CSV version of the data returned by L<Locale::Country::SubCountry::Base//all_countries()>.
 
 The output should match data/countries, except for slight variations in sort order.
 
@@ -321,7 +241,7 @@ HTML table (for inclusion in a web page), or a whole web page.
 
 The templates for this HTML are in htdocs/assets/templates/locale/country/subcountry/.
 
-=head2 init()
+=head2 _init()
 
 For use by subclasses.
 
@@ -333,7 +253,7 @@ For use by subclasses.
 
 =head2 sub_countries_as_csv()
 
-Print to STDOUT a CSV version of the 'sub_countries' table.
+Print to STDOUT a CSV version of the data returned by L<Locale::Country::SubCountry::Base//all_sub_countries()>.
 
 The output should match data/sub_countries, except for slight variations in sort order.
 
