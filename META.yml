@@ -8,7 +8,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.38
 dynamic_config: 1
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120630'
 license: artistic
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,16 +17,16 @@ name: Locale-Country-SubCountry
 provides:
   Locale::Country::SubCountry:
     file: lib/Locale/Country/SubCountry.pm
-    version: 1.02
+    version: 1.03
   Locale::Country::SubCountry::Base:
     file: lib/Locale/Country/SubCountry/Base.pm
-    version: 1.02
+    version: 1.03
   Locale::Country::SubCountry::Database::Export:
     file: lib/Locale/Country/SubCountry/Database/Export.pm
-    version: 1.02
+    version: 1.03
   Locale::Country::SubCountry::Util::Config:
     file: lib/Locale/Country/SubCountry/Util/Config.pm
-    version: 1.02
+    version: 1.03
 requires:
   Config::Tiny: 2.13
   Data::Section::Simple: 0.02
@@ -42,4 +42,4 @@ requires:
   parent: 0.224
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 1.02
+version: 1.03

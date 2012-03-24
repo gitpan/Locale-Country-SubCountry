@@ -6,7 +6,7 @@ use warnings;
 
 use Hash::FieldHash ':all';
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 # -----------------------------------------------
 
@@ -39,7 +39,7 @@ sub new
 
 =head1 NAME
 
-L<Locale::Country::SubCountry> - Country names in English, and subcountry names in native scripts
+Locale::Country::SubCountry - Country names in English, and subcountry names in native scripts
 
 =head1 Synopsis
 

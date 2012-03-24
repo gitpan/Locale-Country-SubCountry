@@ -1,5 +1,11 @@
 Revision history for Perl extension Locale::Country::SubCountry.
 
+1.03  Sat Mar 24 17:53:00 2012
+	- Fix bug introduced in V 1.02, whereby countries with ids > South Sudan's were not incremented by 1 to compensate
+	  	  for South Sudan's presence.
+	- Expand t/test.t to check sub-country names near the end of the list.
+	- Change web.page.tx to add /build/yui to the path to yui-min.js.
+
 1.02  Tue Aug 30 10:49:00 2011
 	- Add South Sudan.
 	- Move data/countries.csv and data/sub_countries.csv into the source code of Locale::Country::SubCountry::Base,

@@ -10,7 +10,7 @@ use Text::Xslate 'mark_raw';
 
 fieldhash my %whole_page => 'whole_page';
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 # -----------------------------------------------
 
